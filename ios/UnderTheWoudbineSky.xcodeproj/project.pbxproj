@@ -9,9 +9,17 @@
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-UnderTheWoudbineSky.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-UnderTheWoudbineSky.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		198C77B804D44F7798A2A5C1 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A36938C662D6480E84999E31 /* Raleway-Black.ttf */; };
+		41C1C23DF4D24003AE9322CA /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA9A0A788AEB4172BE36A830 /* Raleway-Medium.ttf */; };
+		4FAE66BF510243488FC182FF /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1714AED5D345434C909F20AC /* Raleway-Regular.ttf */; };
+		63960F4BABE145AA8371C684 /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C24629180E649378E10D211 /* Raleway-ExtraBold.ttf */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B3577815396F4BD5AC69BEDA /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93722038EA7749CFA3374D01 /* Raleway-Bold.ttf */; };
+		D7D6BFA05FCC49A4A38C52F9 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7C21F35E5B04460DA415964D /* Raleway-SemiBold.ttf */; };
+		DDBA08E66B7E43229A815A20 /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68D24BACB4244E168EEDA798 /* Raleway-Light.ttf */; };
 		E23DC003154C7132E18FEC57 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		EC1A4BF900104207BF224C5C /* Raleway-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E57F12DE25634CA282E292D4 /* Raleway-ExtraLight.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,11 +27,19 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = UnderTheWoudbineSky/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = UnderTheWoudbineSky/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = UnderTheWoudbineSky/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1714AED5D345434C909F20AC /* Raleway-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-Regular.ttf"; path = "../assets/fonts/Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		1C24629180E649378E10D211 /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-ExtraBold.ttf"; path = "../assets/fonts/Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-UnderTheWoudbineSky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnderTheWoudbineSky.debug.xcconfig"; path = "Target Support Files/Pods-UnderTheWoudbineSky/Pods-UnderTheWoudbineSky.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-UnderTheWoudbineSky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnderTheWoudbineSky.release.xcconfig"; path = "Target Support Files/Pods-UnderTheWoudbineSky/Pods-UnderTheWoudbineSky.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-UnderTheWoudbineSky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UnderTheWoudbineSky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68D24BACB4244E168EEDA798 /* Raleway-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-Light.ttf"; path = "../assets/fonts/Raleway-Light.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = UnderTheWoudbineSky/AppDelegate.swift; sourceTree = "<group>"; };
+		7C21F35E5B04460DA415964D /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-SemiBold.ttf"; path = "../assets/fonts/Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = UnderTheWoudbineSky/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		93722038EA7749CFA3374D01 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-Bold.ttf"; path = "../assets/fonts/Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		A36938C662D6480E84999E31 /* Raleway-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-Black.ttf"; path = "../assets/fonts/Raleway-Black.ttf"; sourceTree = "<group>"; };
+		DA9A0A788AEB4172BE36A830 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-Medium.ttf"; path = "../assets/fonts/Raleway-Medium.ttf"; sourceTree = "<group>"; };
+		E57F12DE25634CA282E292D4 /* Raleway-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Raleway-ExtraLight.ttf"; path = "../assets/fonts/Raleway-ExtraLight.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -60,6 +76,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7C6F8EEB2027447E8CDC342B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E57F12DE25634CA282E292D4 /* Raleway-ExtraLight.ttf */,
+				DA9A0A788AEB4172BE36A830 /* Raleway-Medium.ttf */,
+				7C21F35E5B04460DA415964D /* Raleway-SemiBold.ttf */,
+				1C24629180E649378E10D211 /* Raleway-ExtraBold.ttf */,
+				1714AED5D345434C909F20AC /* Raleway-Regular.ttf */,
+				68D24BACB4244E168EEDA798 /* Raleway-Light.ttf */,
+				A36938C662D6480E84999E31 /* Raleway-Black.ttf */,
+				93722038EA7749CFA3374D01 /* Raleway-Bold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +106,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				7C6F8EEB2027447E8CDC342B /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -161,6 +193,14 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				E23DC003154C7132E18FEC57 /* PrivacyInfo.xcprivacy in Resources */,
+				EC1A4BF900104207BF224C5C /* Raleway-ExtraLight.ttf in Resources */,
+				41C1C23DF4D24003AE9322CA /* Raleway-Medium.ttf in Resources */,
+				D7D6BFA05FCC49A4A38C52F9 /* Raleway-SemiBold.ttf in Resources */,
+				63960F4BABE145AA8371C684 /* Raleway-ExtraBold.ttf in Resources */,
+				4FAE66BF510243488FC182FF /* Raleway-Regular.ttf in Resources */,
+				DDBA08E66B7E43229A815A20 /* Raleway-Light.ttf in Resources */,
+				198C77B804D44F7798A2A5C1 /* Raleway-Black.ttf in Resources */,
+				B3577815396F4BD5AC69BEDA /* Raleway-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,9 +231,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UnderTheWoudbineSky/Pods-UnderTheWoudbineSky-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UnderTheWoudbineSky/Pods-UnderTheWoudbineSky-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -230,9 +274,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UnderTheWoudbineSky/Pods-UnderTheWoudbineSky-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-UnderTheWoudbineSky/Pods-UnderTheWoudbineSky-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -273,7 +321,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.UnderTheWoudbineSky;
 				PRODUCT_NAME = UnderTheWoudbineSky;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -300,7 +348,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.UnderTheWoudbineSky;
 				PRODUCT_NAME = UnderTheWoudbineSky;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -376,10 +424,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -448,10 +493,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
