@@ -4,10 +4,10 @@ import {
   ImageBackground,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import UnderTheSkyPressable from './UnderTheSkyPressable';
 
 const UnderTheSkyListCard = ({ location, selectedScreen }) => {
   const navigation = useNavigation();
@@ -42,7 +42,7 @@ const UnderTheSkyListCard = ({ location, selectedScreen }) => {
               />
             )}
 
-            <TouchableOpacity
+            <UnderTheSkyPressable
               activeOpacity={0.7}
               onPress={() => {
                 navigation.navigate('DetailsUnderTheWoubineSky', {
@@ -52,7 +52,7 @@ const UnderTheSkyListCard = ({ location, selectedScreen }) => {
               }}
             >
               <Image source={require('../../assets/images/woudbineopn.png')} />
-            </TouchableOpacity>
+            </UnderTheSkyPressable>
           </View>
         </View>
       </LinearGradient>

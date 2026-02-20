@@ -6,7 +6,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import UnderTheSkyCardDetails from '../UnderTheWoubineSkyComponents/UnderTheSkyCardDetails';
@@ -14,6 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { achievementsList } from '../UnderTheWoubineSkyData/woudbineachvs';
 import LinearGradient from 'react-native-linear-gradient';
+import UnderTheSkyPressable from '../UnderTheWoubineSkyComponents/UnderTheSkyPressable';
 
 const VISITED_STORAGE_KEY = '@visited_places';
 const ACHIEVEMENTS_STORAGE_KEY = '@achievements';
@@ -129,12 +129,12 @@ const DetailsUnderTheWoubineSky = ({ route }) => {
     <View style={styles.woudbinecnt}>
       <ScrollView contentContainerStyle={styles.woudbinscrollcnt}>
         <View style={styles.woudbinewrppr}>
-          <TouchableOpacity
+          <UnderTheSkyPressable
             activeOpacity={0.7}
             onPress={() => navigation.goBack()}
           >
             <Image source={require('../../assets/images/woudbineback.png')} />
-          </TouchableOpacity>
+          </UnderTheSkyPressable>
           {selectedScreen === 'mapScreen' && (
             <Text style={styles.woudbinelbltxt}>Interactive map</Text>
           )}

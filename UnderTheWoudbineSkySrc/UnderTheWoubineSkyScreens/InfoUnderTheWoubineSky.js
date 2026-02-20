@@ -13,9 +13,10 @@ import {
   Share,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
+import UnderTheSkyPressable from '../UnderTheWoubineSkyComponents/UnderTheSkyPressable';
+import UnderTheSkyReveal from '../UnderTheWoubineSkyComponents/UnderTheSkyReveal';
 
 const { height } = Dimensions.get('window');
 
@@ -62,7 +63,7 @@ const InfoUnderTheWoubineSky = () => {
       await Share.share({
         message:
           Platform.OS === 'ios'
-            ? `“Under the Woudbine Sky” introduces you to unique places in Canada that you won’t find in your usual guidebooks.
+            ? `“Woudbine Undеr the Skу” introduces you to unique places in Canada that you won’t find in your usual guidebooks.
 Here you can save your favorite spots, learn interesting facts, and get marks for the locations you visit.
 Travel with guide Celine and collect your own collection of stories under the Woubine sky.`
             : `“Under the Star Sky” introduces you to unique places in Canada that you won’t find in your usual guidebooks. 
@@ -97,16 +98,20 @@ Travel with guide Celine and collect your own collection of stories under the St
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <View style={styles.woudbinewrppr}>
-            <Text style={styles.woudbinelbltxt}>Information</Text>
+          <UnderTheSkyReveal delay={0}>
+            <View style={styles.woudbinewrppr}>
+              <Text style={styles.woudbinelbltxt}>Information</Text>
 
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={() => setShowWoudbineMenu(true)}
-            >
-              <Image source={require('../../assets/images/woudbineburg.png')} />
-            </TouchableOpacity>
-          </View>
+              <UnderTheSkyPressable
+                activeOpacity={0.7}
+                onPress={() => setShowWoudbineMenu(true)}
+              >
+                <Image
+                  source={require('../../assets/images/woudbineburg.png')}
+                />
+              </UnderTheSkyPressable>
+            </View>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         {showWoudbineMenu && (
@@ -133,14 +138,16 @@ Travel with guide Celine and collect your own collection of stories under the St
                 }}
               >
                 <Text style={styles.woudbinepoptxt}>Menu</Text>
-                <TouchableOpacity onPress={() => setShowWoudbineMenu(false)}>
+                <UnderTheSkyPressable
+                  onPress={() => setShowWoudbineMenu(false)}
+                >
                   <Image
                     source={require('../../assets/images/woudbinecls.png')}
                   />
-                </TouchableOpacity>
+                </UnderTheSkyPressable>
               </View>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 onPress={() => {
                   navigation.popToTop();
                   setShowWoudbineMenu(false);
@@ -149,16 +156,26 @@ Travel with guide Celine and collect your own collection of stories under the St
                 <Text style={[styles.woudbinepopsectxt, { marginBottom: 19 }]}>
                   Home
                 </Text>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 onPress={() => {
                   navigation.navigate('SavedUnderTheWoubineSky');
                   setShowWoudbineMenu(false);
                 }}
               >
                 <Text style={styles.woudbinepopsectxt}>Saved places</Text>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
+
+              <UnderTheSkyPressable
+                style={{ marginTop: 20 }}
+                onPress={() => {
+                  navigation.navigate('QuizUnderTheWoubineSky');
+                  setShowWoudbineMenu(false);
+                }}
+              >
+                <Text style={styles.woudbinepopsectxt}>Quiz</Text>
+              </UnderTheSkyPressable>
 
               <View
                 style={{
@@ -175,7 +192,7 @@ Travel with guide Celine and collect your own collection of stories under the St
               </View>
 
               {Platform.OS === 'ios' && (
-                <TouchableOpacity
+                <UnderTheSkyPressable
                   style={{ marginTop: 19 }}
                   onPress={() => {
                     navigation.navigate('ProfileUnderTheWoubineSky');
@@ -183,7 +200,7 @@ Travel with guide Celine and collect your own collection of stories under the St
                   }}
                 >
                   <Text style={styles.woudbinepopsectxt}>Profile</Text>
-                </TouchableOpacity>
+                </UnderTheSkyPressable>
               )}
             </View>
           </Modal>
@@ -197,27 +214,28 @@ Travel with guide Celine and collect your own collection of stories under the St
             marginBottom: 20,
           }}
         >
-          {Platform.OS === 'ios' ? (
-            <Image
-              source={require('../../assets/images/woudbineinflog.png')}
-              style={{
-                width: 350,
-                height: 350,
-                borderTopLeftRadius: 52,
-                borderTopRightRadius: 52,
-              }}
-            />
-          ) : (
-            <Image
-              source={require('../../assets/images/woubineandrlogo.png')}
-              style={{
-                width: 350,
-                height: 350,
-                borderTopLeftRadius: 52,
-                borderTopRightRadius: 52,
-              }}
-            />
-          )}
+          <UnderTheSkyReveal delay={80}>
+            {Platform.OS === 'ios' ? (
+              <Image
+                source={require('../../assets/images/woudbineinflog.png')}
+                style={{
+                  width: 350,
+                  height: 350,
+                  borderRadius: 32,
+                }}
+              />
+            ) : (
+              <Image
+                source={require('../../assets/images/woubineandrlogo.png')}
+                style={{
+                  width: 350,
+                  height: 350,
+                  borderTopLeftRadius: 52,
+                  borderTopRightRadius: 52,
+                }}
+              />
+            )}
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -226,11 +244,13 @@ Travel with guide Celine and collect your own collection of stories under the St
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <Text style={[styles.woudbinesectxt, { marginBottom: 20 }]}>
-            {Platform.OS === 'ios'
-              ? '“Under the Woudbine Sky” introduces you to unique places in Canada that you won’t find in your usual guidebooks. Here you can save your favorite spots, learn interesting facts, and get marks for the locations you visit. Travel with guide Celine and collect your own collection of stories under the Woubine sky.'
-              : '“Under the Star Sky” introduces you to unique places in Canada that you won’t find in your usual guidebooks. Here you can save your favorite spots, learn interesting facts, and get marks for the locations you visit. Travel with guide Celine and collect your own collection of stories under the Star sky.'}
-          </Text>
+          <UnderTheSkyReveal delay={160}>
+            <Text style={[styles.woudbinesectxt, { marginBottom: 20 }]}>
+              {Platform.OS === 'ios'
+                ? 'Woudbine Undеr the Skу introduces you to unique places in Canada that you won’t find in your usual guidebooks. Here you can save your favorite spots, learn interesting facts, and get marks for the locations you visit. Travel with guide Celine and collect your own collection of stories under the Woubine sky.'
+                : '“Under the Star Sky” introduces you to unique places in Canada that you won’t find in your usual guidebooks. Here you can save your favorite spots, learn interesting facts, and get marks for the locations you visit. Travel with guide Celine and collect your own collection of stories under the Star sky.'}
+            </Text>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -240,24 +260,26 @@ Travel with guide Celine and collect your own collection of stories under the St
             alignItems: 'center',
           }}
         >
-          <TouchableOpacity
-            onPressIn={prssInWb}
-            onPressOut={prssOutWb}
-            onPress={shareWoudbineInfo}
-            activeOpacity={1}
-          >
-            <Animated.View style={{ transform: [{ scale: buttonScale }] }}>
-              <ImageBackground
-                source={require('../../assets/images/woudbinebtshr.png')}
-                style={styles.woudbinwrp}
-              >
-                <Image
-                  source={require('../../assets/images/woudbineshric.png')}
-                />
-                <Text style={styles.woudbinebtntxt}>Share</Text>
-              </ImageBackground>
-            </Animated.View>
-          </TouchableOpacity>
+          <UnderTheSkyReveal delay={240}>
+            <UnderTheSkyPressable
+              onPressIn={prssInWb}
+              onPressOut={prssOutWb}
+              onPress={shareWoudbineInfo}
+              activeOpacity={1}
+            >
+              <Animated.View style={{ transform: [{ scale: buttonScale }] }}>
+                <ImageBackground
+                  source={require('../../assets/images/woudbinebtshr.png')}
+                  style={styles.woudbinwrp}
+                >
+                  <Image
+                    source={require('../../assets/images/woudbineshric.png')}
+                  />
+                  <Text style={styles.woudbinebtntxt}>Share</Text>
+                </ImageBackground>
+              </Animated.View>
+            </UnderTheSkyPressable>
+          </UnderTheSkyReveal>
         </Animated.View>
       </ScrollView>
     </ImageBackground>

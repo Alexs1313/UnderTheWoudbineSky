@@ -1,19 +1,19 @@
 workflows:
   ios-workflow:
-    name: Under the Woudbine Sky
+    name: 'Woudbine Undеr the Skу'
     max_build_duration: 120
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: UnderTheWoudbineSkyAPIKey
+      app_store_connect: WoudbineSkyAPIKey
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.UnderTheWoudbineSky
+        bundle_identifier: WoudbineSky
       vars:
-        BUNDLE_ID: com.UnderTheWoudbineSky
+        BUNDLE_ID: WoudbineSky
         XCODE_WORKSPACE: UnderTheWoudbineSky.xcworkspace
         XCODE_SCHEME: UnderTheWoudbineSky
-        APP_STORE_APPLE_ID: 6757128286
+        APP_STORE_APPLE_ID: 6759450345
     scripts:
       - name: Install npm dependencies
         script: |
@@ -44,4 +44,4 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_app_store: true
-        copyright: Under the Woudbine Sky 2025
+        copyright: 'Woudbine Undеr the Skу 2026'

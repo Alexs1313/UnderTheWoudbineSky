@@ -8,9 +8,10 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
+import UnderTheSkyPressable from '../UnderTheWoubineSkyComponents/UnderTheSkyPressable';
+import UnderTheSkyReveal from '../UnderTheWoubineSkyComponents/UnderTheSkyReveal';
 
 const WelcomeUnderTheWoubineSky = () => {
   const [currWoudbineIdx, setCurrWoudbineIdx] = useState(0);
@@ -76,32 +77,34 @@ const WelcomeUnderTheWoubineSky = () => {
             },
           ]}
         >
-          {currWoudbineIdx === 0 ? (
-            <Image
-              source={require('../../assets/images/woudbineonim1.png')}
-              style={{ top: 20 }}
-            />
-          ) : currWoudbineIdx === 1 ? (
-            <Image
-              source={require('../../assets/images/woudbineonim2.png')}
-              style={{ marginBottom: 40 }}
-            />
-          ) : (
-            <View>
+          <UnderTheSkyReveal delay={0}>
+            {currWoudbineIdx === 0 ? (
               <Image
-                source={require('../../assets/images/woudbineonim3.png')}
-                style={{ left: -80, top: -20 }}
+                source={require('../../assets/images/woudbineonim1.png')}
+                style={{ top: 20 }}
               />
+            ) : currWoudbineIdx === 1 ? (
               <Image
-                source={require('../../assets/images/woudbineonim4.png')}
-                style={{ top: 20, right: -60, position: 'absolute' }}
+                source={require('../../assets/images/woudbineonim2.png')}
+                style={{ marginBottom: 40 }}
               />
-              <Image
-                source={require('../../assets/images/woudbineonim5.png')}
-                style={{ top: -20, left: -30 }}
-              />
-            </View>
-          )}
+            ) : (
+              <View>
+                <Image
+                  source={require('../../assets/images/woudbineonim3.png')}
+                  style={{ left: -80, top: -20 }}
+                />
+                <Image
+                  source={require('../../assets/images/woudbineonim4.png')}
+                  style={{ top: 20, right: -60, position: 'absolute' }}
+                />
+                <Image
+                  source={require('../../assets/images/woudbineonim5.png')}
+                  style={{ top: -20, left: -30 }}
+                />
+              </View>
+            )}
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -113,7 +116,8 @@ const WelcomeUnderTheWoubineSky = () => {
             },
           ]}
         >
-          <View style={styles.woudbinewlccont}>
+          <UnderTheSkyReveal delay={90}>
+            <View style={styles.woudbinewlccont}>
             <Text style={styles.woudbinelbltxt}>
               {currWoudbineIdx === 0
                 ? 'Welcome'
@@ -130,7 +134,8 @@ const WelcomeUnderTheWoubineSky = () => {
                 ? 'In our journey, you will collect memories - imprints of places in the form of stamps that will remain only in your collection. Each journey is your own trace under the Woubine sky.'
                 : 'In our journey, you will collect memories - imprints of places in the form of stamps that will remain only in your collection. Each journey is your own trace under the Star sky.'}
             </Text>
-          </View>
+            </View>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -142,38 +147,40 @@ const WelcomeUnderTheWoubineSky = () => {
             },
           ]}
         >
-          <TouchableOpacity
-            activeOpacity={1}
-            onPressIn={onPressIn}
-            onPressOut={onPressOut}
-            onPress={() => {
-              if (currWoudbineIdx < 2) {
-                setCurrWoudbineIdx(currWoudbineIdx + 1);
-              } else {
-                navigation.replace('HomeUnderTheWoubineSky');
-              }
-            }}
-          >
-            <Animated.View style={{ transform: [{ scale: buttonScale }] }}>
-              <ImageBackground
-                source={require('../../assets/images/woudbinebtn.png')}
-                style={{
-                  width: 205,
-                  height: 73,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-                <Text style={styles.woudbinebtntxt}>
-                  {currWoudbineIdx === 0
-                    ? 'Continue'
-                    : currWoudbineIdx === 1
-                    ? 'Go next'
-                    : 'Start now'}
-                </Text>
-              </ImageBackground>
-            </Animated.View>
-          </TouchableOpacity>
+          <UnderTheSkyReveal delay={180}>
+            <UnderTheSkyPressable
+              activeOpacity={1}
+              onPressIn={onPressIn}
+              onPressOut={onPressOut}
+              onPress={() => {
+                if (currWoudbineIdx < 2) {
+                  setCurrWoudbineIdx(currWoudbineIdx + 1);
+                } else {
+                  navigation.replace('RegistrationUnderTheWoubineSky');
+                }
+              }}
+            >
+              <Animated.View style={{ transform: [{ scale: buttonScale }] }}>
+                <ImageBackground
+                  source={require('../../assets/images/woudbinebtn.png')}
+                  style={{
+                    width: 205,
+                    height: 73,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Text style={styles.woudbinebtntxt}>
+                    {currWoudbineIdx === 0
+                      ? 'Continue'
+                      : currWoudbineIdx === 1
+                      ? 'Go next'
+                      : 'Start now'}
+                  </Text>
+                </ImageBackground>
+              </Animated.View>
+            </UnderTheSkyPressable>
+          </UnderTheSkyReveal>
         </Animated.View>
       </ScrollView>
     </ImageBackground>

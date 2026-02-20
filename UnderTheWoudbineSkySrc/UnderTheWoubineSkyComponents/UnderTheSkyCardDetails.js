@@ -9,12 +9,12 @@ import {
   Share,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MapView, { Marker } from 'react-native-maps';
 import { useStore } from '../UnderTheWoubineSkyStore/underTheSkyContext';
+import UnderTheSkyPressable from './UnderTheSkyPressable';
 
 const UnderTheSkyCardDetails = ({ location }) => {
   const [isOpenedMap, setIsOpenedMap] = useState(false);
@@ -87,23 +87,23 @@ ${location.woudbinedescr}
               </Text>
             </View>
             {toggleWoudbineIcn ? (
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 activeOpacity={0.7}
                 onPress={() => toggleWoudbineSaved(location)}
               >
                 <Image
                   source={require('../../assets/images/woudbineliked.png')}
                 />
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
             ) : (
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 activeOpacity={0.7}
                 onPress={() => toggleWoudbineSaved(location)}
               >
                 <Image
                   source={require('../../assets/images/woudbinelike.png')}
                 />
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
             )}
           </View>
         </LinearGradient>
@@ -135,7 +135,7 @@ ${location.woudbinedescr}
               ) : null}
             </Marker>
           </MapView>
-          <TouchableOpacity
+          <UnderTheSkyPressable
             activeOpacity={0.8}
             style={{
               position: 'absolute',
@@ -150,7 +150,7 @@ ${location.woudbinedescr}
             >
               <Text style={styles.woudbinebtntxt}>Close map</Text>
             </ImageBackground>
-          </TouchableOpacity>
+          </UnderTheSkyPressable>
           <LinearGradient
             colors={['#000000', '#00000000']}
             style={styles.woudbinegrd}
@@ -162,7 +162,7 @@ ${location.woudbinedescr}
             {location.woudbinedescr}
           </Text>
           <View style={{ flexDirection: 'row', gap: 8 }}>
-            <TouchableOpacity
+            <UnderTheSkyPressable
               activeOpacity={0.8}
               onPress={shareWoudbinePlaceDetails}
             >
@@ -175,9 +175,9 @@ ${location.woudbinedescr}
                 />
                 <Text style={styles.woudbinebtntxt}>Share place</Text>
               </ImageBackground>
-            </TouchableOpacity>
+            </UnderTheSkyPressable>
 
-            <TouchableOpacity
+            <UnderTheSkyPressable
               activeOpacity={0.8}
               onPress={() => setIsOpenedMap(true)}
             >
@@ -192,7 +192,7 @@ ${location.woudbinedescr}
               >
                 <Text style={styles.woudbinebtntxt}>On map</Text>
               </ImageBackground>
-            </TouchableOpacity>
+            </UnderTheSkyPressable>
           </View>
         </View>
       )}

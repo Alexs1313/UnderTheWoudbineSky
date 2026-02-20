@@ -10,12 +10,13 @@ import {
   Share,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { achievementsList } from '../UnderTheWoubineSkyData/woudbineachvs';
+import UnderTheSkyPressable from '../UnderTheWoubineSkyComponents/UnderTheSkyPressable';
+import UnderTheSkyReveal from '../UnderTheWoubineSkyComponents/UnderTheSkyReveal';
 
 const { height } = Dimensions.get('window');
 
@@ -96,22 +97,24 @@ const MarksUnderTheWoubineSky = () => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <View style={styles.woudbinewrppr}>
-            <TouchableOpacity
-              activeOpacity={1}
-              onPressIn={() => pressIn(backScale)}
-              onPressOut={() => pressOut(backScale)}
-              onPress={() => navigation.goBack()}
-            >
-              <Animated.View style={{ transform: [{ scale: backScale }] }}>
-                <Image
-                  source={require('../../assets/images/woudbineback.png')}
-                />
-              </Animated.View>
-            </TouchableOpacity>
+          <UnderTheSkyReveal delay={0}>
+            <View style={styles.woudbinewrppr}>
+              <UnderTheSkyPressable
+                activeOpacity={1}
+                onPressIn={() => pressIn(backScale)}
+                onPressOut={() => pressOut(backScale)}
+                onPress={() => navigation.goBack()}
+              >
+                <Animated.View style={{ transform: [{ scale: backScale }] }}>
+                  <Image
+                    source={require('../../assets/images/woudbineback.png')}
+                  />
+                </Animated.View>
+              </UnderTheSkyPressable>
 
-            <Text style={styles.woudbinettl}>Marks</Text>
-          </View>
+              <Text style={styles.woudbinettl}>Marks</Text>
+            </View>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -120,32 +123,34 @@ const MarksUnderTheWoubineSky = () => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <LinearGradient
-            colors={['#E11712', '#7B0D0A']}
-            style={{
-              marginBottom: 23,
-              width: '100%',
-              borderRadius: 12,
-            }}
-          >
-            <View
+          <UnderTheSkyReveal delay={90}>
+            <LinearGradient
+              colors={['#E11712', '#7B0D0A']}
               style={{
-                paddingHorizontal: 16,
-                padding: 20,
-                height: 162,
-                justifyContent: 'center',
+                marginBottom: 23,
+                width: '100%',
+                borderRadius: 12,
               }}
             >
-              <Text style={styles.woudbinefacttxt}>
-                This is where I keep your bookmarks for places you've visited.
-              </Text>
+              <View
+                style={{
+                  paddingHorizontal: 16,
+                  padding: 20,
+                  height: 162,
+                  justifyContent: 'center',
+                }}
+              >
+                <Text style={styles.woudbinefacttxt}>
+                  This is where I keep your bookmarks for places you've visited.
+                </Text>
 
-              <Image
-                source={require('../../assets/images/woudbinefctim.png')}
-                style={{ position: 'absolute', bottom: 0, right: 0 }}
-              />
-            </View>
-          </LinearGradient>
+                <Image
+                  source={require('../../assets/images/woudbinefctim.png')}
+                  style={{ position: 'absolute', bottom: 0, right: 0 }}
+                />
+              </View>
+            </LinearGradient>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -168,7 +173,7 @@ const MarksUnderTheWoubineSky = () => {
                     <>
                       <Text style={styles.woudbinedtatxt}>{achData.date}</Text>
                       <Text style={styles.woudbinelbltxt}>{a.name}</Text>
-                      <TouchableOpacity
+                      <UnderTheSkyPressable
                         activeOpacity={1}
                         onPressIn={() => pressIn(shareScale)}
                         onPressOut={() => pressOut(shareScale)}
@@ -190,7 +195,7 @@ const MarksUnderTheWoubineSky = () => {
                             Share mark
                           </Text>
                         </Animated.View>
-                      </TouchableOpacity>
+                      </UnderTheSkyPressable>
                     </>
                   ) : (
                     <Text style={styles.woudbinelbltxt}>{a.name}</Text>

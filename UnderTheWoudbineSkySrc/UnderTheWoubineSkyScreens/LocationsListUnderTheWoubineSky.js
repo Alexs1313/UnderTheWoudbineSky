@@ -16,7 +16,6 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { woudbinelocs } from '../UnderTheWoubineSkyData/woudbinelocs';
@@ -25,8 +24,43 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { useStore } from '../UnderTheWoubineSkyStore/underTheSkyContext';
 import { BlurView } from '@react-native-community/blur';
 import LinearGradient from 'react-native-linear-gradient';
+import UnderTheSkyPressable from '../UnderTheWoubineSkyComponents/UnderTheSkyPressable';
+import UnderTheSkyReveal from '../UnderTheWoubineSkyComponents/UnderTheSkyReveal';
 
 const { height } = Dimensions.get('window');
+
+const WoudbineAnimatedCard = ({ children, index }) => {
+  const cardFade = useRef(new Animated.Value(0)).current;
+  const cardTranslate = useRef(new Animated.Value(16)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.timing(cardFade, {
+        toValue: 1,
+        duration: 320,
+        delay: index * 85,
+        useNativeDriver: true,
+      }),
+      Animated.timing(cardTranslate, {
+        toValue: 0,
+        duration: 320,
+        delay: index * 85,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  }, [index]);
+
+  return (
+    <Animated.View
+      style={{
+        opacity: cardFade,
+        transform: [{ translateY: cardTranslate }],
+      }}
+    >
+      {children}
+    </Animated.View>
+  );
+};
 
 const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
   const navigation = useNavigation();
@@ -110,16 +144,17 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          {selectedScreen === 'savedScreen' && (
-            <View
-              style={[
-                styles.woudbinewrppr,
-                { justifyContent: 'space-between' },
-              ]}
-            >
+          <UnderTheSkyReveal delay={0}>
+            {selectedScreen === 'savedScreen' && (
+              <View
+                style={[
+                  styles.woudbinewrppr,
+                  { justifyContent: 'space-between' },
+                ]}
+              >
               <Text style={styles.woudbinelbltxt}>Saved places</Text>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 activeOpacity={1}
                 onPressIn={() => pressIn(buttonScaleMenu)}
                 onPressOut={() => pressOut(buttonScaleMenu)}
@@ -132,13 +167,13 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                     source={require('../../assets/images/woudbineburg.png')}
                   />
                 </Animated.View>
-              </TouchableOpacity>
-            </View>
-          )}
+              </UnderTheSkyPressable>
+              </View>
+            )}
 
-          {selectedScreen === 'popularScreen' && (
-            <View style={styles.woudbinewrppr}>
-              <TouchableOpacity
+            {selectedScreen === 'popularScreen' && (
+              <View style={styles.woudbinewrppr}>
+              <UnderTheSkyPressable
                 activeOpacity={1}
                 onPressIn={() => pressIn(buttonScaleBack)}
                 onPressOut={() => pressOut(buttonScaleBack)}
@@ -151,11 +186,12 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                     source={require('../../assets/images/woudbineback.png')}
                   />
                 </Animated.View>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
 
               <Text style={styles.woudbinelbltxt}>Popular places</Text>
-            </View>
-          )}
+              </View>
+            )}
+          </UnderTheSkyReveal>
         </Animated.View>
 
         {showWoudbineMenu && selectedScreen === 'savedScreen' && (
@@ -183,17 +219,17 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                 }}
               >
                 <Text style={styles.woudbinepoptxt}>Menu</Text>
-                <TouchableOpacity
+                <UnderTheSkyPressable
                   activeOpacity={0.7}
                   onPress={() => setShowWoudbineMenu(false)}
                 >
                   <Image
                     source={require('../../assets/images/woudbinecls.png')}
                   />
-                </TouchableOpacity>
+                </UnderTheSkyPressable>
               </View>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 activeOpacity={0.7}
                 onPress={() => {
                   navigation.popToTop();
@@ -202,7 +238,7 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                 style={{ marginBottom: 20 }}
               >
                 <Text style={styles.woudbinepopsectxt}>Home</Text>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
 
               <View
                 style={{
@@ -218,7 +254,7 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                 <Text style={styles.woudbinepoptxt}>SAVED PLACES</Text>
               </View>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 activeOpacity={0.7}
                 onPress={() => {
                   navigation.navigate('InfoUnderTheWoubineSky');
@@ -226,10 +262,21 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                 }}
               >
                 <Text style={styles.woudbinepopsectxt}>Information</Text>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
+
+              <UnderTheSkyPressable
+                style={{ marginTop: 19 }}
+                activeOpacity={0.7}
+                onPress={() => {
+                  navigation.navigate('QuizUnderTheWoubineSky');
+                  setShowWoudbineMenu(false);
+                }}
+              >
+                <Text style={styles.woudbinepopsectxt}>Quiz</Text>
+              </UnderTheSkyPressable>
 
               {Platform.OS === 'ios' && (
-                <TouchableOpacity
+                <UnderTheSkyPressable
                   style={{ marginTop: 19 }}
                   activeOpacity={0.7}
                   onPress={() => {
@@ -238,7 +285,7 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                   }}
                 >
                   <Text style={styles.woudbinepopsectxt}>Profile</Text>
-                </TouchableOpacity>
+                </UnderTheSkyPressable>
               )}
             </View>
           </Modal>
@@ -250,19 +297,21 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <View>
-            <TextInput
-              placeholder="Search places"
-              style={styles.woudbineinpt}
-              value={woudbineInptVavue}
-              onChangeText={setWoudbineInptVavue}
-              placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
-            />
-            <Image
-              source={require('../../assets/images/woudbinesrc.png')}
-              style={styles.woudbineicn}
-            />
-          </View>
+          <UnderTheSkyReveal delay={80}>
+            <View>
+              <TextInput
+                placeholder="Search places"
+                style={styles.woudbineinpt}
+                value={woudbineInptVavue}
+                onChangeText={setWoudbineInptVavue}
+                placeholderTextColor={'rgba(255, 255, 255, 0.5)'}
+              />
+              <Image
+                source={require('../../assets/images/woudbinesrc.png')}
+                style={styles.woudbineicn}
+              />
+            </View>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         {selectedScreen === 'savedScreen' && woudbineSavedList.length === 0 && (
@@ -294,7 +343,7 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                   yet.
                 </Text>
 
-                <TouchableOpacity
+                <UnderTheSkyPressable
                   activeOpacity={1}
                   onPressIn={() => pressIn(buttonScaleEmpty)}
                   onPressOut={() => pressOut(buttonScaleEmpty)}
@@ -314,7 +363,7 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
                   >
                     <Text style={styles.woudbineshrbtntxt}>Open places</Text>
                   </Animated.View>
-                </TouchableOpacity>
+                </UnderTheSkyPressable>
 
                 <Image
                   source={require('../../assets/images/woudbinefctim.png')}
@@ -332,11 +381,9 @@ const LocationsListUnderTheWoubineSky = ({ selectedScreen }) => {
           }}
         >
           {filteredPlaces.map((loc, idx) => (
-            <UnderTheSkyListCard
-              key={idx}
-              location={loc}
-              selectedScreen={selectedScreen}
-            />
+            <WoudbineAnimatedCard key={loc.woudbinelid ?? idx} index={idx}>
+              <UnderTheSkyListCard location={loc} selectedScreen={selectedScreen} />
+            </WoudbineAnimatedCard>
           ))}
         </Animated.View>
       </ScrollView>

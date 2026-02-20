@@ -8,7 +8,6 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import { woudbinelocs } from '../UnderTheWoubineSkyData/woudbinelocs';
@@ -18,6 +17,8 @@ import { useStore } from '../UnderTheWoubineSkyStore/underTheSkyContext';
 import MapView, { Marker } from 'react-native-maps';
 
 import LinearGradient from 'react-native-linear-gradient';
+import UnderTheSkyPressable from '../UnderTheWoubineSkyComponents/UnderTheSkyPressable';
+import UnderTheSkyReveal from '../UnderTheWoubineSkyComponents/UnderTheSkyReveal';
 
 const { height } = Dimensions.get('window');
 
@@ -82,22 +83,24 @@ const MapUnderTheWoubineSky = () => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <View style={styles.woudbinewrppr}>
-            <TouchableOpacity
-              activeOpacity={1}
-              onPressIn={pressIn}
-              onPressOut={pressOut}
-              onPress={() => navigation.goBack()}
-            >
-              <Animated.View style={{ transform: [{ scale: backScale }] }}>
-                <Image
-                  source={require('../../assets/images/woudbineback.png')}
-                />
-              </Animated.View>
-            </TouchableOpacity>
+          <UnderTheSkyReveal delay={0}>
+            <View style={styles.woudbinewrppr}>
+              <UnderTheSkyPressable
+                activeOpacity={1}
+                onPressIn={pressIn}
+                onPressOut={pressOut}
+                onPress={() => navigation.goBack()}
+              >
+                <Animated.View style={{ transform: [{ scale: backScale }] }}>
+                  <Image
+                    source={require('../../assets/images/woudbineback.png')}
+                  />
+                </Animated.View>
+              </UnderTheSkyPressable>
 
-            <Text style={styles.woudbinelbltxt}>Interactive map</Text>
-          </View>
+              <Text style={styles.woudbinelbltxt}>Interactive map</Text>
+            </View>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -109,6 +112,7 @@ const MapUnderTheWoubineSky = () => {
             },
           ]}
         >
+          <UnderTheSkyReveal delay={90} style={{ flex: 1 }}>
           <MapView
             userInterfaceStyle="dark"
             style={{ flex: 1 }}
@@ -186,6 +190,7 @@ const MapUnderTheWoubineSky = () => {
               />
             </Animated.View>
           )}
+          </UnderTheSkyReveal>
         </Animated.View>
       </ScrollView>
     </ImageBackground>

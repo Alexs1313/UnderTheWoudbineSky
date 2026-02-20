@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useRef, useState } from 'react';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Alert,
   Animated,
@@ -12,12 +12,14 @@ import {
   Share,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { woudbinefcts } from '../UnderTheWoubineSkyData/woudbinefcts';
 import { BlurView } from '@react-native-community/blur';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import UnderTheSkyPressable from '../UnderTheWoubineSkyComponents/UnderTheSkyPressable';
+import UnderTheSkyReveal from '../UnderTheWoubineSkyComponents/UnderTheSkyReveal';
 
 const { height } = Dimensions.get('window');
 
@@ -25,6 +27,8 @@ const HomeUnderTheWoubineSky = () => {
   const [showWoudbineMenu, setShowWoudbineMenu] = useState(false);
 
   const [woudbineFact, setWoudbineFact] = useState(null);
+  const [woudbineProfileName, setWoudbineProfileName] = useState('');
+  const [woudbineProfilePhoto, setWoudbineProfilePhoto] = useState(null);
 
   const navigation = useNavigation();
 
@@ -50,6 +54,25 @@ const HomeUnderTheWoubineSky = () => {
       }),
     ]).start();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      const getWoudbineProfile = async () => {
+        const profileData = await AsyncStorage.getItem('woudbineProfile');
+        if (!profileData) {
+          setWoudbineProfileName('');
+          setWoudbineProfilePhoto(null);
+          return;
+        }
+
+        const parsedData = JSON.parse(profileData);
+        setWoudbineProfileName(parsedData?.name ?? '');
+        setWoudbineProfilePhoto(parsedData?.photo ?? null);
+      };
+
+      getWoudbineProfile();
+    }, []),
+  );
 
   const shareWoudbineFact = async () => {
     try {
@@ -100,38 +123,52 @@ const HomeUnderTheWoubineSky = () => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <View style={styles.woudbinewrppr}>
-            {Platform.OS === 'ios' ? (
-              <Image
-                source={require('../../assets/images/woudbinehmlogo.png')}
-                style={{ width: 73, height: 73, borderRadius: 22 }}
-              />
-            ) : (
-              <Image
-                source={require('../../assets/images/woubineandrlogo.png')}
-                style={{ width: 73, height: 73, borderRadius: 22 }}
-              />
-            )}
-            <Text style={styles.woudbinelbltxt}>Hello, traveler!</Text>
+          <UnderTheSkyReveal delay={0}>
+            <View style={styles.woudbinewrppr}>
+            <View style={styles.woudbineProfileWrap}>
+              {woudbineProfilePhoto ? (
+                <Image
+                  source={{ uri: woudbineProfilePhoto }}
+                  style={styles.woudbineProfileAvatar}
+                />
+              ) : Platform.OS === 'ios' ? (
+                <Image
+                  source={require('../../assets/images/woudbinehmlogo.png')}
+                  style={styles.woudbineProfileAvatar}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/images/woubineandrlogo.png')}
+                  style={styles.woudbineProfileAvatar}
+                />
+              )}
+              <Text style={styles.woudbinelbltxt}>
+                {'Hello, '}
+                <Text style={styles.woudbinelbltxt}>
+                  {woudbineProfileName}!
+                </Text>
+              </Text>
+            </View>
 
             <View style={{ flexDirection: 'row', gap: 12 }}>
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 activeOpacity={0.7}
                 onPress={() => navigation.navigate('MarksUnderTheWoubineSky')}
               >
                 <Image source={require('../../assets/images/woudbineic.png')} />
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 activeOpacity={0.7}
                 onPress={() => setShowWoudbineMenu(true)}
               >
                 <Image
                   source={require('../../assets/images/woudbineburg.png')}
                 />
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
             </View>
-          </View>
+            </View>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         {showWoudbineMenu && (
@@ -157,16 +194,16 @@ const HomeUnderTheWoubineSky = () => {
                 }}
               >
                 <Text style={styles.woudbinepoptxt}>Menu</Text>
-                <TouchableOpacity onPress={() => setShowWoudbineMenu(false)}>
+                <UnderTheSkyPressable onPress={() => setShowWoudbineMenu(false)}>
                   <Image
                     source={require('../../assets/images/woudbinecls.png')}
                   />
-                </TouchableOpacity>
+                </UnderTheSkyPressable>
               </View>
 
               <Text style={styles.woudbinepoptxt}>HOME</Text>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 onPress={() => {
                   navigation.navigate('SavedUnderTheWoubineSky');
                   setShowWoudbineMenu(false);
@@ -177,19 +214,29 @@ const HomeUnderTheWoubineSky = () => {
                 >
                   Saved places
                 </Text>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 onPress={() => {
                   navigation.navigate('InfoUnderTheWoubineSky');
                   setShowWoudbineMenu(false);
                 }}
               >
                 <Text style={styles.woudbinepopsectxt}>Information</Text>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
+
+              <UnderTheSkyPressable
+                style={{ marginTop: 19 }}
+                onPress={() => {
+                  navigation.navigate('QuizUnderTheWoubineSky');
+                  setShowWoudbineMenu(false);
+                }}
+              >
+                <Text style={styles.woudbinepopsectxt}>Quiz</Text>
+              </UnderTheSkyPressable>
 
               {Platform.OS === 'ios' && (
-                <TouchableOpacity
+                <UnderTheSkyPressable
                   style={{ marginTop: 19 }}
                   onPress={() => {
                     navigation.navigate('ProfileUnderTheWoubineSky');
@@ -197,7 +244,7 @@ const HomeUnderTheWoubineSky = () => {
                   }}
                 >
                   <Text style={styles.woudbinepopsectxt}>Profile</Text>
-                </TouchableOpacity>
+                </UnderTheSkyPressable>
               )}
             </View>
           </Modal>
@@ -209,15 +256,16 @@ const HomeUnderTheWoubineSky = () => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <LinearGradient
-            colors={['#E11712', '#7B0D0A']}
-            style={{ marginBottom: 32, borderRadius: 12 }}
-          >
-            <View style={{ padding: 20 }}>
+          <UnderTheSkyReveal delay={80}>
+            <LinearGradient
+              colors={['#E11712', '#7B0D0A']}
+              style={{ marginBottom: 32, borderRadius: 12 }}
+            >
+              <View style={{ padding: 20 }}>
               <Text style={styles.woudbinefactttl}>Daily facts:</Text>
               <Text style={styles.woudbinefacttxt}>{woudbineFact}</Text>
 
-              <TouchableOpacity
+              <UnderTheSkyPressable
                 onPressIn={onPressIn}
                 onPressOut={onPressOut}
                 onPress={shareWoudbineFact}
@@ -227,14 +275,15 @@ const HomeUnderTheWoubineSky = () => {
                     source={require('../../assets/images/woudbineshr.png')}
                   />
                 </Animated.View>
-              </TouchableOpacity>
+              </UnderTheSkyPressable>
 
               <Image
                 source={require('../../assets/images/woudbinefctim.png')}
                 style={{ position: 'absolute', bottom: 0, right: 0 }}
               />
-            </View>
-          </LinearGradient>
+              </View>
+            </LinearGradient>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -243,17 +292,18 @@ const HomeUnderTheWoubineSky = () => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <ImageBackground
-            source={require('../../assets/images/woudbinemp.png')}
-            style={styles.woudbinewlccont}
-          >
-            <LinearGradient
-              colors={['#00000000', '#000000']}
-              style={{ flex: 1, justifyContent: 'flex-end' }}
+          <UnderTheSkyReveal delay={160}>
+            <ImageBackground
+              source={require('../../assets/images/woudbinemp.png')}
+              style={styles.woudbinewlccont}
             >
-              <View style={styles.woudbinecntwrppr}>
+              <LinearGradient
+                colors={['#00000000', '#000000']}
+                style={{ flex: 1, justifyContent: 'flex-end' }}
+              >
+                <View style={styles.woudbinecntwrppr}>
                 <Text style={styles.woudbinelbltxt}>Interactive map</Text>
-                <TouchableOpacity
+                <UnderTheSkyPressable
                   onPressIn={onPressIn}
                   onPressOut={onPressOut}
                   onPress={() => navigation.navigate('MapUnderTheWoubineSky')}
@@ -265,10 +315,11 @@ const HomeUnderTheWoubineSky = () => {
                       source={require('../../assets/images/woudbineopn.png')}
                     />
                   </Animated.View>
-                </TouchableOpacity>
-              </View>
-            </LinearGradient>
-          </ImageBackground>
+                </UnderTheSkyPressable>
+                </View>
+              </LinearGradient>
+            </ImageBackground>
+          </UnderTheSkyReveal>
         </Animated.View>
 
         <Animated.View
@@ -277,17 +328,18 @@ const HomeUnderTheWoubineSky = () => {
             transform: [{ translateY: translateAnim }],
           }}
         >
-          <ImageBackground
-            source={require('../../assets/images/woudbineplc.png')}
-            style={[styles.woudbinewlccont, { height: 227 }]}
-          >
-            <LinearGradient
-              colors={['#00000000', '#000000']}
-              style={{ flex: 1, justifyContent: 'flex-end' }}
+          <UnderTheSkyReveal delay={240}>
+            <ImageBackground
+              source={require('../../assets/images/woudbineplc.png')}
+              style={[styles.woudbinewlccont, { height: 227 }]}
             >
-              <View style={styles.woudbinecntwrppr}>
+              <LinearGradient
+                colors={['#00000000', '#000000']}
+                style={{ flex: 1, justifyContent: 'flex-end' }}
+              >
+                <View style={styles.woudbinecntwrppr}>
                 <Text style={styles.woudbinelbltxt}>Popular places</Text>
-                <TouchableOpacity
+                <UnderTheSkyPressable
                   onPressIn={onPressIn}
                   onPressOut={onPressOut}
                   onPress={() =>
@@ -301,10 +353,11 @@ const HomeUnderTheWoubineSky = () => {
                       source={require('../../assets/images/woudbineopn.png')}
                     />
                   </Animated.View>
-                </TouchableOpacity>
-              </View>
-            </LinearGradient>
-          </ImageBackground>
+                </UnderTheSkyPressable>
+                </View>
+              </LinearGradient>
+            </ImageBackground>
+          </UnderTheSkyReveal>
         </Animated.View>
       </ScrollView>
     </ImageBackground>
@@ -337,6 +390,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 38,
+  },
+  woudbineProfileWrap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+    maxWidth: '70%',
+  },
+  woudbineProfileAvatar: {
+    width: 52,
+    height: 52,
+    borderRadius: 14,
   },
   woudbinecntwrppr: {
     padding: 16,

@@ -9,6 +9,8 @@ import WelcomeUnderTheWoubineSky from '../UnderTheWoubineSkyScreens/WelcomeUnder
 import ProfileUnderTheWoubineSky from '../UnderTheWoubineSkyScreens/ProfileUnderTheWoubineSky';
 import PopularUnderTheWoubineSky from '../UnderTheWoubineSkyScreens/PopularUnderTheWoubineSky';
 import SavedUnderTheWoubineSky from '../UnderTheWoubineSkyScreens/SavedUnderTheWoubineSky';
+import QuizUnderTheWoubineSky from '../UnderTheWoubineSkyScreens/QuizUnderTheWoubineSky';
+import RegistrationUnderTheWoubineSky from '../UnderTheWoubineSkyScreens/RegistrationUnderTheWoubineSky';
 const Stack = createStackNavigator();
 
 const NavUnderTheWoubineSky = () => {
@@ -53,6 +55,14 @@ const NavUnderTheWoubineSky = () => {
       <Stack.Screen
         name="ProfileUnderTheWoubineSky"
         component={ProfileUnderTheWoubineSky}
+      />
+      <Stack.Screen
+        name="QuizUnderTheWoubineSky"
+        component={QuizUnderTheWoubineSky}
+      />
+      <Stack.Screen
+        name="RegistrationUnderTheWoubineSky"
+        component={RegistrationUnderTheWoubineSky}
       />
     </Stack.Navigator>
   );
