@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  Alert,
   Animated,
   Dimensions,
   Image,
@@ -36,7 +35,7 @@ const RegistrationUnderTheWoubineSky = () => {
           navigation.replace('HomeUnderTheWoubineSky');
         }
       } catch {
-        // Keep user on this screen if storage read fails.
+        console.error('Error checking existing profile:');
       }
     };
 
@@ -142,34 +141,34 @@ const RegistrationUnderTheWoubineSky = () => {
 
         <UnderTheSkyReveal delay={160}>
           <View style={styles.woudbineformCard}>
-          <TextInput
-            value={woudbineName}
-            onChangeText={setWoudbineName}
-            placeholder="Your name"
-            placeholderTextColor="rgba(255, 255, 255, 0.35)"
-            style={styles.woudbineinpt}
-          />
+            <TextInput
+              value={woudbineName}
+              onChangeText={setWoudbineName}
+              placeholder="Your name"
+              placeholderTextColor="rgba(255, 255, 255, 0.35)"
+              style={styles.woudbineinpt}
+            />
 
-          <View style={styles.woudbinephotoRow}>
-            <Text style={styles.woudbinephototxt}>Photo:</Text>
-            <UnderTheSkyPressable
-              activeOpacity={0.8}
-              style={styles.woudbinephotoBtn}
-              onPress={pickProfilePhoto}
-            >
-              {woudbinePhoto ? (
-                <Image
-                  source={{ uri: woudbinePhoto }}
-                  style={styles.woudbinephotoimg}
-                />
-              ) : (
-                <Image
-                  source={require('../../assets/images/ph.png')}
-                  style={{ tintColor: '#E11712' }}
-                />
-              )}
-            </UnderTheSkyPressable>
-          </View>
+            <View style={styles.woudbinephotoRow}>
+              <Text style={styles.woudbinephototxt}>Photo:</Text>
+              <UnderTheSkyPressable
+                activeOpacity={0.8}
+                style={styles.woudbinephotoBtn}
+                onPress={pickProfilePhoto}
+              >
+                {woudbinePhoto ? (
+                  <Image
+                    source={{ uri: woudbinePhoto }}
+                    style={styles.woudbinephotoimg}
+                  />
+                ) : (
+                  <Image
+                    source={require('../../assets/images/ph.png')}
+                    style={{ tintColor: '#E11712' }}
+                  />
+                )}
+              </UnderTheSkyPressable>
+            </View>
           </View>
         </UnderTheSkyReveal>
 

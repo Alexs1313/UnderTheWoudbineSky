@@ -18,7 +18,7 @@ const NavUnderTheWoubineSky = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="WelcomeUnderTheWoubineSky"
-        component={WelcomeUnderTheWoubineSky}
+        component={WelcomeUnderTheWoubineSy}
       />
       <Stack.Screen
         name="HomeUnderTheWoubineSky"
