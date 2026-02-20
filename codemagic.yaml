@@ -8,9 +8,9 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: WoudbineSky
+        bundle_identifier: com.WoudbineSky
       vars:
-        BUNDLE_ID: WoudbineSky
+        BUNDLE_ID: com.WoudbineSky
         XCODE_WORKSPACE: UnderTheWoudbineSky.xcworkspace
         XCODE_SCHEME: UnderTheWoudbineSky
         APP_STORE_APPLE_ID: 6759450345
